@@ -14,3 +14,9 @@ $router->add('session/userupdate', array(
 		'controller' => 'session',
 		'action' => 'userupdate'
 ));
+
+$router->add('session/getactivesessions', array(
+		'controller' => 'session',
+		'action' => 'getactivesessions'
+));
+

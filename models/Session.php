@@ -20,5 +20,17 @@ class Session extends Model
 	{
 		return "session";
 	}
+	
+	public function initialize() {
+	
+		$this->belongsTo(
+				'restaurant_id',
+				'\CoderSet\Models\Restaurant',
+				'id',
+				array(
+						'alias' => 'Restaurant',
+				));
+	
+	}
 			
 }

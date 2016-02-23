@@ -1,5 +1,7 @@
 <?php
 
+namespace CoderSet\Models;
+
 use Phalcon\Mvc\Model;
 
 class Restaurant extends Model

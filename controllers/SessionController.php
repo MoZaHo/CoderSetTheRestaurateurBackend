@@ -13,9 +13,9 @@ use Phalcon\Mvc\Controller;
 class SessionController extends ControllerBase
 {
 	
-public function listAction() {
+	public function listAction() {
 
-		$obj = json_decode($this->request->getRawBody('userid'));
+		$obj = json_decode($this->request->getRawBody());
 		
 		$data = array();
 		$data['rows'] = 0;
@@ -174,6 +174,45 @@ public function listAction() {
 		$this->response->setContent(json_encode($result));
 	
 		
+	}
+	
+	public function getactivesessionsAction() {
+		$obj = json_decode($this->request->getRawBody());
+		
+		$data = array();
+		$data['rows'] = 0;
+		
+		//Lets first get the Session
+		$query = $this->modelsManager->createBuilder();
+		$query->addFrom('\CoderSet\Models\Session','s');
+		$query->leftJoin('\CoderSet\Models\SessionUser','s.id = su.session_id','su');
+		$query->columns('s.id,s.restaurant_id,s.restaurant_branch_id,s.restaurant_branch_table_id');
+		$query->where('s.status = 1 AND su.user_id = ' . $obj->userid);
+		$result = $query->getQuery()->execute();
+		
+		$data['data'] = array();
+		
+		foreach ($result as $r) {
+			
+			$restaurant = \CoderSet\Models\Restaurant::findFirst($r->restaurant_id);
+			$branch = \CoderSet\Models\RestaurantBranch::findFirst($r->restaurant_branch_id);
+			$table = \CoderSet\Models\RestaurantBranchTable::findFirst($r->restaurant_branch_table_id);
+			
+			$details = array();
+			$details['session_id'] = $r->id;
+			$details['restaurant'] = $restaurant;
+			$details['branch'] = $branch;
+			$details['table'] = $table;
+			$details['sessioncombo'] = $r->restaurant_id . "/" . $r->restaurant_branch_id . "/" . $r->restaurant_branch_table_id;
+			$data['data'][] = $details;
+		}
+		
+		$result = array(
+				'status' => true,
+				'data' => $data
+		);
+			
+		$this->response->setContent(json_encode($result));
 	}
 	
 }
