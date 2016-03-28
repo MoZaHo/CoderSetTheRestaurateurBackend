@@ -13,7 +13,7 @@ class OrderController extends ControllerBase
 {
 	
 	public function getAction() {
-
+		
 		$obj = json_decode($this->request->getRawBody('userid'));
 		
 		$data = array();
@@ -24,13 +24,13 @@ class OrderController extends ControllerBase
     	$query->columns('SUM(o.amount) as AmntSum , o.price, o.menu_unit_id');
     	$query->addFrom('\CoderSet\Models\Orders','o');
 
-    	$query->where('o.session_id = 1 AND o.user_id = ' . $obj->user_id);
+    	$query->where('o.session_id = 1 AND o.user_id = ' . $obj->user_id .' AND o.paid = 0');
     	$query->groupBy('o.menu_unit_id');
 		$result = $query->getQuery()->execute();
 		
 		$data['waitron'] 	= 'Your mom';
 		$data['started'] 	= $session->time_start;
-		$data['incoice'] 	= 'n/a';
+		$data['invoice'] 	= 'n/a';
 		$data['covers'] 	= '2';
 		$data['details'] 	= array();
 		$data['totals'] 	= array();
@@ -78,16 +78,30 @@ class OrderController extends ControllerBase
 		
 		foreach ($item->unitcount as $k => $v) {
 			
-			$menu_unit = \CoderSet\Models\MenuUnit::findFirst($k);
+			if ($v > 0) {
 			
-			$order = new \CoderSet\Models\Orders();
-			$order->session_id = 1;
-			$order->menu_unit_id = $k;
-			$order->user_id = $obj->user_id;
-			$order->amount = $v;
-			$order->price = $menu_unit->price;
-			
-			$order->save();
+				$menu_unit = \CoderSet\Models\MenuUnit::findFirst($k);
+				
+				$order = new \CoderSet\Models\Orders();
+				$order->session_id = 1;
+				$order->menu_unit_id = $k;
+				$order->user_id = $obj->user_id;
+				$order->amount = $v;
+				$order->price = $menu_unit->price;
+				$order->paid = 0;
+				
+				$order->save();
+				
+				// *subscribe to the same channel below
+				// from another script/terminal or debug console
+				
+				/*$pubnub->subscribe('theeasymenu_1.1.1', function ($envelope) {
+					error_log(json_encode($envelope['message']));
+				});*/
+				
+				\CoderSet\Controllers\PubNubController::SendMessage('theeasymenu_1.1.1', 0, 0, 'tbl', 5, '');
+				
+			}
 		}
 		
 		$result = array(

@@ -1,5 +1,5 @@
 Options +FollowSymLinks -MultiViews -Indexes
-
+Header set Access-Control-Allow-Origin "*"
 DirectoryIndex index.html index.php
 
 <IfModule mod_rewrite.c>

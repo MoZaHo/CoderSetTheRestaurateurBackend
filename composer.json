@@ -1,5 +1,6 @@
 {
     "require": {
-        "phalcon/incubator": "v1.3.5"
+        "phalcon/incubator": "v1.3.5",
+        "pubnub/pubnub": "3.8.1"
     }
 }

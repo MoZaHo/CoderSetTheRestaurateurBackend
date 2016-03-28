@@ -20,3 +20,13 @@ $router->add('session/getactivesessions', array(
 		'action' => 'getactivesessions'
 ));
 
+$router->add('session/requests', array(
+		'controller' => 'session',
+		'action' => 'requests'
+));
+
+$router->add('session/action', array(
+		'controller' => 'session',
+		'action' => 'action'
+));
+

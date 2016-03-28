@@ -33,11 +33,12 @@ class TableController extends ControllerBase
 			
 			$user_details['id'] = $s->user_id;
 			$user_details['name'] = $s->User->name . ' ' . $s->User->surname;
+			$user_details['image'] = $s->User->image;
 			
 			$iItems = 0;
 			$iTotal = 0;
 			
-			$order = \CoderSet\Models\Orders::find('session_id = 1 AND user_id = ' . $s->user_id);
+			$order = \CoderSet\Models\Orders::find('session_id = 1 AND user_id = ' . $s->user_id .' AND paid = 0');
 			foreach ($order as $o) {
 				$iItems += $o->amount;
 				$iTotal += $o->amount * $o->price;

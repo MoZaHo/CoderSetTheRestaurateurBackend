@@ -13,6 +13,7 @@ class Orders extends Model
 	public $user_id;
 	public $amount;
 	public $price;
+	public $paid;
 
 
 	public function getSource()

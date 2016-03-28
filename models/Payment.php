@@ -1,5 +1,7 @@
 <?php
 
+namespace CoderSet\Models;
+
 use Phalcon\Mvc\Model;
 
 class Payment extends Model
@@ -7,7 +9,6 @@ class Payment extends Model
 		
 	public $id;
 	public $session_id;
-	public $order_id;
 	public $user_id;
 	public $payment_method;
 	public $payment_amount;
@@ -19,6 +20,34 @@ class Payment extends Model
 	public function getSource()
 	{
 		return "payment";
+	}
+	
+	public function initialize() {
+	
+		$this->belongsTo(
+				'session_id',
+				'\CoderSet\Models\Session',
+				'id',
+				array(
+						'alias' => 'Session',
+				));
+		
+		$this->belongsTo(
+				'user_id',
+				'\CoderSet\Models\User',
+				'id',
+				array(
+						'alias' => 'User',
+				));
+		
+		$this->belongsTo(
+				'on_behalf_of_user_id',
+				'\CoderSet\Models\User',
+				'id',
+				array(
+						'alias' => 'OnBehalfOf',
+				));
+	
 	}
 			
 }

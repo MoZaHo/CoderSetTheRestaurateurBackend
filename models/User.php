@@ -13,6 +13,7 @@ class User extends Model
 	public $email;
 	public $mobile;
 	public $status;
+	public $image;
 
 
 	public function getSource()

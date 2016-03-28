@@ -10,6 +10,7 @@ class Menu extends Model
 	public $id;
 	public $restaurant_branch_id;
 	public $item;
+	public $image;
 
 
 	public function getSource()

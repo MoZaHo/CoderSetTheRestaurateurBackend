@@ -6,5 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Pubnub\\' => array($vendorDir . '/pubnub/pubnub/composer/lib'),
     'Phalcon' => array($vendorDir . '/phalcon/incubator/Library'),
 );

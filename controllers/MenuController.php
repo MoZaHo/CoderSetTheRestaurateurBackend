@@ -19,10 +19,10 @@ class MenuController extends ControllerBase
 		
 		$data = array();
 		$units = array();
-		
 		$menu = \CoderSet\Models\Menu::find('restaurant_branch_id = ' . $obj->restaurant_branch_id);
 		
 		foreach($menu as $m) {
+			
 			$item = array();
 			$item['details'] = $m;
 			

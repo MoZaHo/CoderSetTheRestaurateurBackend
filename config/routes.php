@@ -20,6 +20,7 @@ $router->add('/', array(
 
 require_once 'routes_menu.php';
 require_once 'routes_orders.php';
+require_once 'routes_payment.php';
 require_once 'routes_session.php';
 require_once 'routes_table.php';
 require_once 'routes_user.php';
