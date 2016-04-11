@@ -34,8 +34,6 @@ try {
     $app->response->setHeader('Access-Control-Allow-Origin', '*');
     $app->response->setHeader('Access-Control-Allow-Headers', 'X_ACCESS_TOKEN, X-ACCESS-TOKEN, Content-Type');
     
-    error_log("Request...");
-    
     // if this is an OPTIONS request, just respond
     if ($app->request->getMethod() == 'OPTIONS') {
         $app->response->send();

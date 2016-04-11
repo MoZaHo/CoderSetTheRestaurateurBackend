@@ -4,14 +4,14 @@ namespace CoderSet\Models;
 
 use Phalcon\Mvc\Model;
 
-class Menu extends Model
+class LinkMenuRestaurantBranch extends Model
 {
 		
 	public $id;
-	public $restaurant_id;
-	public $name;
-
-
+	public $menu_id;
+	public $restaurant_branch_id;
+	
+	
 	public function getSource()
 	{
 		return "menu";
@@ -20,21 +20,21 @@ class Menu extends Model
 	public function initialize() {
 	
 		$this->belongsTo(
-				'restaurant_id',
-				'\CoderSet\Models\Restaurant',
+				'restaurant_branch_id',
+				'\CoderSet\Models\RestaurantBranch',
 				'id',
 				array(
 						'alias' => 'Restaurant',
 				));
-		
-		$this->hasMany(
-				'id',
-				'\CoderSet\Models\MenuItem',
+	
+		$this->belongsTo(
 				'menu_id',
+				'\CoderSet\Models\Menu',
+				'id',
 				array(
-						'alias' => 'MenuItem',
+						'alias' => 'Menu',
 				));
-		
+	
 	}
 			
 }

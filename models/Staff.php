@@ -4,17 +4,22 @@ namespace CoderSet\Models;
 
 use Phalcon\Mvc\Model;
 
-class Menu extends Model
+class Staff extends Model
 {
 		
 	public $id;
-	public $restaurant_id;
 	public $name;
+	public $surname;
+	public $id_number;
+	public $email;
+	public $telephone;
+	public $status;
+	public $restaurant_id;
 
 
 	public function getSource()
 	{
-		return "menu";
+		return "staff";
 	}
 	
 	public function initialize() {
@@ -26,15 +31,7 @@ class Menu extends Model
 				array(
 						'alias' => 'Restaurant',
 				));
-		
-		$this->hasMany(
-				'id',
-				'\CoderSet\Models\MenuItem',
-				'menu_id',
-				array(
-						'alias' => 'MenuItem',
-				));
-		
+			
 	}
 			
 }

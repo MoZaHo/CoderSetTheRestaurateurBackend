@@ -8,7 +8,7 @@ class MenuUnit extends Model
 {
 		
 	public $id;
-	public $menu_id;
+	public $menu_item_id;
 	public $sale_unit;
 	public $price;
 
@@ -21,11 +21,11 @@ class MenuUnit extends Model
 	public function initialize() {
 	
 		$this->belongsTo(
-				'menu_id',
-				'\CoderSet\Models\Menu',
+				'menu_item_id',
+				'\CoderSet\Models\MenuItem',
 				'id',
 				array(
-						'alias' => 'Menu',
+						'alias' => 'MenuItem',
 				));
 		
 		$this->belongsTo(

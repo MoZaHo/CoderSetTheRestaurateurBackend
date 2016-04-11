@@ -18,10 +18,14 @@ $router->add('/', array(
     'action' => 'index'
 ));
 
+require_once 'routes_area.php';
+require_once 'routes_branch.php';
 require_once 'routes_menu.php';
 require_once 'routes_orders.php';
 require_once 'routes_payment.php';
+require_once 'routes_restaurant.php';
 require_once 'routes_session.php';
+require_once 'routes_staff.php';
 require_once 'routes_table.php';
 require_once 'routes_user.php';
 
