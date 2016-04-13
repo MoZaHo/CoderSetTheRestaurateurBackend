@@ -11,8 +11,7 @@ class RestaurantBranchArea extends Model
 	public $restaurant_branch_id;
 	public $name;
 	public $status;
-
-
+	
 	public function getSource()
 	{
 		return "restaurant_branch_area";

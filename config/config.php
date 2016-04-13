@@ -11,7 +11,7 @@ return new \Phalcon\Config(array(
         'adapter' => 'Mysql',
         'host' => '127.0.0.1',
         'username' => 'root',
-        'password' => '',
+        'password' => 'M0rn300S',
         'dbname' => 'coderset_the_restauranteur',
     ),
     'application' => array(

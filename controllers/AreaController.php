@@ -100,21 +100,19 @@ class AreaController extends ControllerBase
 		foreach ($area as $a) {
 
 			if($obj->include_tables) {
-				$a->RestaurantBranchAreaTable;
+				
 				$tables = array();
 				foreach($a->RestaurantBranchAreaTable as $t) {
 					$tables[] = $t;
 				}
-				$tmp_holder[] = $tables;
+
+				$a->RestaurantBranchAreaTable = $tables;
 			}
 
-			$a->fuckme = "Asdf";
-
-			//$a->RestaurantBranchAreaTable = $tmp_holder;
 			$data[] = $a;
 
 		}
-
+		
 		$result = array(
 				'status' => true,
 				'data' => $data
