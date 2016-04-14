@@ -5,7 +5,7 @@ $router->add('area/set[/]?{session_id:[0-9]*}', array(
 		'action' => 'set'
 ));
 
-$router->add('area/get[/]?{session_id:[0-9]*}', array(
+$router->add('area/get[/]?{restaurant_id:[0-9]*}', array(
 		'controller' => 'area',
 		'action' => 'get'
 ));

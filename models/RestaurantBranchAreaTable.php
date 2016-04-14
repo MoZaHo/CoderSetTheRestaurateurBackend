@@ -6,7 +6,7 @@ use Phalcon\Mvc\Model;
 
 class RestaurantBranchAreaTable extends Model
 {
-		
+
 	public $id;
 	public $restaurant_branch_area_id;
 	public $hash;
@@ -17,17 +17,17 @@ class RestaurantBranchAreaTable extends Model
 	{
 		return "restaurant_branch_area_table";
 	}
-	
+
 	public function initialize() {
-	
-		$this->belongsTo(
+
+		/*$this->belongsTo(
 				'restaurant_branch_area_id',
 				'\CoderSet\Models\RestaurantBranchArea',
 				'id',
 				array(
 						'alias' => 'RestaurantBranchArea',
-				));
-	
+				));*/
+
 	}
-			
+
 }
