@@ -8,8 +8,9 @@ class MenuItem extends Model
 {
 		
 	public $id;
-	public $menu_id;
+	public $menu_section_id;
 	public $item;
+	public $description;
 	public $image;
 
 
@@ -29,11 +30,11 @@ class MenuItem extends Model
 				 ));
 		
 		$this->belongsTo(
-				'menu_id',
-				'\CoderSet\Models\Menu',
+				'menu_section_id',
+				'\CoderSet\Models\MenuSection',
 				'id',
 				array(
-						'alias' => 'Menu',
+						'alias' => 'MenuSection',
 				));
 		
 	}

@@ -89,8 +89,8 @@ class AreaController extends ControllerBase
 	public function getAction() {
 		error_log("[Controller][Area/Get]");
 
-		//$obj = json_decode($this->request->getRawBody());
-		$obj = (object) array("restaurant_branch_id" => "1" , "include_tables" => true);
+		$obj = json_decode($this->request->getRawBody());
+		//$obj = (object) array("restaurant_branch_id" => "1" , "include_tables" => true);
 
 		$data = array();
 
